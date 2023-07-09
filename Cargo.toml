@@ -1,0 +1,26 @@
+[package]
+name = "ltc-reader"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ltc_reader"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "ltc-reader"
+path = "src/cli/main.rs"
+
+[[bin]]
+name = "ltc-reader-gui"
+path = "src/gui/main.rs"
+required-features = ["gui"]
+
+[features]
+gui = ["gtk", "relm"]
+
+[dependencies]
+cpal = "0.15.2"
+gtk = { version = "0.6.6", package = "gtk4", features = ["v4_8"], optional = true }
+relm = { version = "0.6.0", package = "relm4", optional = true }
+serde_json = "1.0"
